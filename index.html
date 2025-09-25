@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Cafe Kasir</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <audio id="sfxclick" src="sounds/click.mp3"></audio>
+  <audio id="sfxpay" src="sounds/pay.mp3"></audio>
+  <body class="login-active">
+    <div id="login-container" class="login-container">
+      <h2>Login Account</h2>
+      <form id="loginForm">
+        <input type="text" id="username" placeholder="Username" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <button type="submit">Login</button>
+        <p id="errormsg" class="error"></p>
+      </form>
+    </div>
+
+    <div id="app-container" class="app-container" style="display: none">
+      <header>
+        <div class="logo-container">
+          <img src="images/logo.png" alt="logo" class="logo" />
+          <span class="logo-text">Cafe Epan</span>
+        </div>
+        <div class="burger" id="burger">&#9776;</div>
+      </header>
+      
+      <div class="contact-bar">
+  <p class="alamat">Jl. Moh Hamzah No 31</p>
+  <p class="telepon">Telp: 0896-7768-5623</p>
+      </div>
+      
+      <nav id="sidebar">
+        <ul>
+          <li>Dashboard</li>
+          <li>Monitoring Restaurant</li>
+          <li>Pesanan Baru</li>
+          <li>Pesanan Resto</li>
+          <li>Delivery Order</li>
+          <li>Bantuan</li>
+          <li>Tentang</li>
+        </ul>
+
+        <div class="account">
+          <img src="images/admin.jpg" alt="admin" class="profil-pic" />
+          <span class="admin-name" id="admin-name">Epan</span>
+          <button id="logoutBtn" class="logoutbtn">Logout</button>
+        </div>
+      </nav>
+
+      <main class="container">
+        <!-- LEFT: Menu -->
+        <section class="menu-section">
+          <div class="controls">
+            <input id="search" placeholder="Cari menu..." />
+            <select id="category">
+              <option value="all">Semua</option>
+              <option value="makanan">Makanan</option>
+              <option value="minuman">Minuman</option>
+              <option value="dessert">Dessert</option>
+            </select>
+          </div>
+
+          <div id="menuGrid" class="menu-grid"></div>
+        </section>
+
+        <!-- RIGHT: Kasir -->
+        <aside class="pos">
+          <h2>Kasir</h2>
+          <div id="cartList" class="cart-list">Keranjang kosong</div>
+
+          <div class="summary">
+            <div><span>Subtotal</span><strong id="subtotal">Rp0</strong></div>
+            <div><span>Pajak 10%</span><strong id="tax">Rp0</strong></div>
+            <div><span>Service 5%</span><strong id="service">Rp0</strong></div>
+            <div class="total">
+              <span>Total</span><strong id="total">Rp0</strong>
+            </div>
+          </div>
+
+          <div class="inputs">
+            <input id="custName" placeholder="Nama pelanggan" />
+            <input
+              id="custMoney"
+              type="number"
+              min="0"
+              placeholder="Uang pelanggan"
+            />
+          </div>
+
+          <div class="actions">
+            <button id="payBtn" class="btn primary">Bayar</button>
+            <button id="resetBtn" class="btn">Reset</button>
+          </div>
+
+          <div class="qris-area">
+            <p class="muted">PEMBAYARAN VIA QRIS</p>
+            <img
+              id="qrisImg"
+              src="images/qris.png"
+              alt="QRIS (letakkan file images/qris.png)"
+            />
+          </div>
+        </aside>
+      </main>
+
+      <!-- Modal sukses -->
+      <div id="modal" class="modal" aria-hidden="true">
+        <div class="modal-card">
+          <h3>Pembayaran Berhasil!</h3>
+          <p id="modalMsg">Terimakasih telah berbelanja di cafe kami.</p>
+          <button id="closeModal" class="btn primary">Tutup</button>
+        </div>
+        
+        <!-- STRUK (Hidden by default) -->
+<div id="receipt" class="receipt" style="display: none;">
+  <h3>Cafe Epan</h3>
+  <p id="receiptName"></p>
+  <p id="receiptSubtotal"></p>
+  <p id="receiptTax"></p>
+  <p id="receiptService"></p>
+  <p id="receiptTotal"></p>
+  <p id="receiptPaid"></p>
+  <p id="receiptChange"></p>
+  <p class="thanks">Terima kasih sudah berbelanja di Cafe Epan!</p>
+</div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
